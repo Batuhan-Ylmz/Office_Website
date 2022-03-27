@@ -1,0 +1,51 @@
+﻿@model Office_Website.Models.Class.Topic
+
+@{
+    /**/
+
+    ViewBag.Title = "GetTopic";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<h2>Konu Güncellem Sayfası</h2>
+
+@using (Html.BeginForm("updateTopic", "Admin", FormMethod.Post))
+{
+    <label>Konu ID</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.Id, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @readonly = "@readonly" } })
+        </div>
+    </div>
+    <label> Konu Resim</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.KonuResim, new { htmlAttributes = new { @class = "form-control", @maxlength = "50" } })
+        </div>
+    </div>
+    <label>Konu Adı</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.KonuAD, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    <label>Düzenlenme Tarihi</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.CreatedAt, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @readonly = "@readonly" } })
+        </div>
+    </div>
+    <label> Konu Açıklaması</label>
+    <div class="form-line">
+        @Html.TextAreaFor(x => x.KonuAciklama, new { @id = "KonuAciklama", @class = "form-control" }) @Html.ValidationMessageFor(x => x.KonuAciklama, "", new { @class = "text-danger" })
+        <script>
+            CKEDITOR.replace("KonuAciklama");
+        </script>
+    </div>
+    <br>
+    <div align="center">
+
+        <button class="btn btn-success m-t-15 waves-effect"> Konu Güncelle</button>
+    </div>
+}
+

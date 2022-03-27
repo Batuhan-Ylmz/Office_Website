@@ -1,0 +1,105 @@
+﻿@using Office_Website.Models.Class
+@model List<Comment>
+@{
+    ViewBag.Title = "GetComment";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Bloglara Yapılan Yorumlar
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <table id="yorumTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Yorum ID</th>
+                                    <th>Kullanıcı Mail</th>
+                                    <th>Blog Başlığı</th>
+                                    <th>Yazıldığı Tarih</th>
+                                    <th>Yorum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <th>@x.KullanıcıADI</th>
+                                        <th>@x.mail></th>
+                                        <th>@Html.Raw(x.Blog.Baslik)</th>
+                                        <th>@x.CreatedAt</th>
+                                        <th>@x.Yorum</th>
+                                        <th>
+                                            <span class="btn bg-cyan waves-effect"><a href="/Blog/Blogdetail/@x.Blog.Id" title="Detayı Gör"> <i class="material-icons"> folder</i></a> </span>
+                                            <a class="btn bg-red waves-effect" data-target="#deleteBlog" title="Sil" onclick="JavaSend(@x.Id)"> <i class="material-icons">delete</i></a>
+                                            <script>
+                                                function JavaSend(id) {
+                                                    var link = "/Admin/deleteComment/" + id;
+                                                    $("#modalLink").attr("href", link);
+                                                    $("#deleteComment").modal();
+                                                }
+                                            </script>
+                                        </th>
+
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog ">
+        <div class="modal-content" id="modelContent" style="top:50px;">
+        </div>
+    </div>
+</div>
+<script src="~/Content/Site/js/jquery.js"></script>
+<script>
+    function createModal(url) {
+        $('#modelContent').load(url);
+        $('#myModal').modal('show');
+    }
+</script>
+<!-- Modal -->
+<div class="modal fade" id="deleteComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="top: 50px;">
+            <div class="modal-header modal-header-success" style="background-color: #d9534f;color: white !important;text-align: center;
+        font-size: 30px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3><i class="glyphicon glyphicon-alert"></i> Kayıt Silme Onayı</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Kayıt silinicektir, Kaydı silmek istediğinize emin misiniz?</h4>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger pull-right" id="modalLink"><i class="material-icons">delete</i> Sil</a>
+                <button type="button" style="margin-right:10px;" class="btn btn-primary pull-right" data-dismiss="modal"><i class="material-icons"> power_settings_new</i>Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<script src="@Url.Content("~/Content/Admin/js/admin.js")"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/DataTables/css/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#yorumTable').dataTable({});
+</script>

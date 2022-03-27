@@ -1,0 +1,51 @@
+﻿@model Office_Website.Models.Class.About
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<h2>Hakkımızda Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("UpdateAbout", "Admin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Id)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.Id, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @readonly = "@readonly" } })
+        </div>
+    </div>
+    @Html.LabelFor(x => x.FotoUrl)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.FotoUrl, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    @Html.LabelFor(x => x.aciklama)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.TextAreaFor(x => x.aciklama, new { @id = "aciklama", @class = "form-control" }) @Html.ValidationMessageFor(x => x.aciklama, "", new { @class = "text-danger" })
+            <script>
+            CKEDITOR.replace("aciklama");
+            </script>
+        </div>
+    </div>
+    @Html.LabelFor(x => x.aciklama2)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.TextAreaFor(x => x.aciklama2, new { @id = "aciklama2", @class = "form-control", @rows = "500" }) @Html.ValidationMessageFor(x => x.aciklama, "", new { @class = "text-danger" })
+            <script>
+            CKEDITOR.replace("aciklama2");
+            </script>
+        </div>
+    </div>
+    @Html.LabelFor(x => x.CreatedAt)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.CreatedAt, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @readonly = "@readonly" } })
+        </div>
+    </div>
+    <br>
+    <div align="center">
+        <button class="btn btn-success m-t-15 waves-effect"> Hakkımızda Güncelle</button>
+    </div>
+}

@@ -1,0 +1,86 @@
+﻿@using Office_Website.Models.Class
+@{
+    Admin admin = new Admin();
+
+    if (Session["Kullanici"] == null)
+
+    {
+        Response.Redirect(Url.Action("Login", "Login"));
+    }
+    else
+    {
+         admin = Session["Kullanici"] as Admin;
+    }
+}
+<aside id="leftsidebar" class="sidebar">
+    <div class="user-info">
+        @if (admin.AdminResmi == null)
+        {
+            <div class="image">
+                <img src="~/Content/Admin/images/user.png" width="48" height="48" alt="User" />
+            </div>
+        }
+        else
+        {
+
+            <div class="image">
+                <img src="@Url.Content(admin.AdminResmi)" width="48" height="48" alt="User" />
+            </div>
+        }
+            <div class="info-container">
+                <div class="name" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@admin.UserName</div>
+                
+            </div>
+    </div>
+    <div class="menu">
+        <ul class="list">
+            <li class="header">Menüler</li>
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    <i class="material-icons">home</i>
+                    <span>Siteye Git</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Admin")">
+                    <i class="material-icons">text_fields</i>
+                    <span>Blog işlemleri</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ListContact","Admin")">
+                    <i class="material-icons">contacts</i>
+                    <span>Adres ve İletişim Bilgileri</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ListAbout","Admin")">
+                    <i class="material-icons">widgets</i>
+                    <span>Hakkımzda</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("GetComment","Admin")">
+                    <i class="material-icons">comment</i>
+                    <span>Yorumlar kısmı</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("listTopic","Admin")">
+                    <i class="material-icons">subject</i>
+                    <span>Konular</span>
+                </a>
+            </li>
+            <li>
+                @if(admin.IsManager == true)
+                {
+                <a href="@Url.Action("ListAdmin","Admin")">
+                    <i class="material-icons">person</i>
+                    <span>Adminler</span>
+                </a>
+                }
+            </li>
+        </ul>
+    </div>
+</aside>
+

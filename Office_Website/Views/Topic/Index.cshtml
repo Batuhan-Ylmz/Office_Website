@@ -1,0 +1,156 @@
+﻿@using Office_Website.Models.Class
+@model List<Topic>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link  rel="stylesheet" href="@Url.Content("~/Content/Site/hovers/hovers.css")">
+
+</head>
+
+
+
+
+
+<div class="inner-banner has-base-color-overlay text-center" style="background: url(/Content/Site/images/background/kesilen.jpg); background-repeat: no-repeat; background-size:cover;">
+    <div class="container">
+        <div class="box">
+            <h3>Çalışma Alanlarımız</h3>
+        </div><!-- /.box -->
+    </div><!-- /.container -->
+</div>
+
+
+
+
+<div  style="background-color:ghostwhite; background-repeat:no-repeat; background-size: cover; margin:auto">
+    <div class="sec-title center">
+        <br />
+        <br />
+        <h2><font color="crimson"><strong>Faaliyet Gösterdiğimiz Hukuki Alanlar</strong></font></h2>
+    </div>
+
+    
+
+    <br />
+    <div class="container">
+        <div class="row">
+            @foreach (var x in Model)
+            {
+                <div class="column">
+                    <div class="effect-6">
+                        <div class="effect-img">
+
+                            <img src="@x.KonuResim" class="img-responsive" style="width:383px; height:214px; opacity:0.8;" alt="Image">
+                        </div>
+                        <div class="effect-title">
+                            <a href="/Topic/Topicdetail/@x.Id" style="text-align:center;"><font size="6" style="color:black;"><b>@x.KonuAD</b></font></a><br />
+                            
+                        </div>
+                        <div class="effect-text">
+                            <div class="link-btn2 center">
+                                <p><a href="/Topic/Topicdetail/@x.Id" class="btn-style-one">Devamını Oku</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <br>
+</div>
+
+
+<style>
+    .mine {
+        margin-left: -100px;
+        background-image: url("/Content/Site/images/background/calismaalanarka.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1100px;
+        width: 1595px;
+    }
+</style>
+
+<style>
+    element.style {
+    }
+
+    .about .section-header {
+        margin-bottom: 30px;
+    }
+
+    .section-header {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        color: #666666;
+        background: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    :root {
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+        --primary: #007bff;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New","monospace";
+</style>

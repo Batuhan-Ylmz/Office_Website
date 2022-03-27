@@ -1,0 +1,17 @@
+﻿@model  Office_Website.Models.Class.BlogComments
+
+<div class="popular_news sidebar-padd mar-1">
+    <div class="inner-title">
+        <h3>Son Gönderilenler</h3>
+    </div>
+    @foreach (var x in Model.Deger1)
+    {
+    <div class="popular-post">
+        <div class="item">
+            <div class="post-thumb"><a href="#"><img src="@Url.Content(x.BlogResmi)" alt=""></a></div>
+            <h4><a href="/Blog/Blogdetail/@x.Id">@Html.Raw(x.Baslik)</a></h4>
+            <div class="post-info">@x.CreatedAt</div>
+        </div>
+    </div>
+    }
+</div>

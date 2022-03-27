@@ -1,0 +1,86 @@
+﻿@model Office_Website.Models.Class.Contact
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-banner has-base-color-overlay text-center" style="background: url(/Content/Site/images/background/iletisimarka.jpg);">
+    <div class="container">
+        <div class="box">
+            <h3>
+                İletişim
+            </h3>
+        </div><!-- /.box -->
+    </div><!-- /.container -->
+</div>
+
+
+<section class="contact_us">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="sec-title">
+                    <h2>Bize Ulaşın</h2>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="alert-success"><font size="4" style="color:green; font-family:'Modern No. 20'">@TempData["Message"]</font></div><br />
+                    <div class="row clearfix">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label>İsminiz *</label>
+                            <div class="form-group">
+                               
+                                <div class="form-line">
+                                    @Html.EditorFor(model => model.AD, new { htmlAttributes = new { @class = "form-control", @required = "reguired" } })
+                                    @Html.ValidationMessageFor(model => model.AD, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label>Mail Adresiniz *</label>
+                            <div class="form-group">
+
+                                <div class="form-line">
+                                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @required = "reguired", @type = "email" } })
+                                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label>Mesajınız *</label>
+                            <div class="form-group">
+
+                                <div class="form-line">
+                                    @Html.EditorFor(model => model.Mesaj, new { htmlAttributes = new { @class = "form-control", @cols = 50, @rows = 8, @required = "reguired" } })
+                                    @Html.ValidationMessageFor(model => model.Mesaj, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                    <button class="btn-style-one" type="submit" data-loading-text="Please wait...">MESAJINIZI GÖNDERİN</button>
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @Html.Action("GetInfo", "Contact")
+        </div>
+    </div>
+
+</section>
+
+
+
+
+

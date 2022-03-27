@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Office_Website.Models.Class.Topic>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Site/css/style.css")">
+<link rel="stylesheet" href="@Url.Content("~/Content/Site/css/responsive.css")">
+<ul>
+    @foreach (var item in Model)
+    {
+    <li><a href="/Topic/Topicdetail/@item.Id">@item.KonuAD</a></li>
+    }
+</ul>

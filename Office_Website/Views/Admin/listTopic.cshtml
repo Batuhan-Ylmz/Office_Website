@@ -1,0 +1,97 @@
+﻿@using Office_Website.Models.Class
+@model List<Topic>
+@{
+    ViewBag.Title = "listTopic";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Konu Başlıkları</h2>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Konu Başlıklarımız/Çalışma Alanlarımız
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table table-bordered" id="topicTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Konu ID</th>
+                                <th>Konu ADI</th>
+                                <th>Konu Resim</th>
+                                <th>Düzenlenme Tarihi</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <th>@x.Id</th>
+                                    <th>@x.KonuAD</th>
+                                    <th>@x.KonuResim</th>
+                                    <th>@x.CreatedAt</th>
+                                    <th>
+                                        <span class="btn bg-cyan waves-effect"><a href="/Blog/Blogdetail/@x.Id" title="Detayı Gör"> <i class="material-icons"> folder</i></a> </span>
+                                        <a class="btn bg-purple waves-effect" href="/Admin/GetTopic/@x.Id" title="Güncelle">  <i class="material-icons">update</i></a>
+                                        <a class="btn bg-red waves-effect" data-target="#deleteTopic" title="Sil" onclick="JavaSend(@x.Id)"> <i class="material-icons">delete</i></a>
+                                        <script>
+                                            function JavaSend(id) {
+                                                var link = "/Admin/deleteTopic/" + id;
+                                                $("#modalLink").attr("href", link);
+                                                $("#deleteTopic").modal();
+                                            }
+                                        </script>
+                                    </th>
+
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                    <a class="btn bg-light-blue waves-effect" href="/Admin/NewTopic/"><i class="material-icons" style="text-align:right">assignment</i>Yeni Konu </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog ">
+        <div class="modal-content" id="modelContent" style="top:50px;">
+        </div>
+    </div>
+</div>
+<script src="~/Content/Site/js/jquery.js"></script>
+<script>
+    function createModal(url) {
+        $('#modelContent').load(url);
+        $('#myModal').modal('show');
+    }
+</script>
+<!-- Modal -->
+<div class="modal fade" id="deleteTopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="top: 50px;">
+            <div class="modal-header modal-header-success" style="background-color: #d9534f;color: white !important;text-align: center;
+        font-size: 30px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3><i class="glyphicon glyphicon-alert"></i> Kayıt Silme Onayı</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Kayıt silinicektir, Kaydı silmek istediğinize emin misiniz?</h4>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger pull-right" id="modalLink"><i class="material-icons">delete</i> Sil</a>
+                <button type="button" style="margin-right:10px;" class="btn btn-primary pull-right" data-dismiss="modal"><i class="material-icons"> power_settings_new</i>Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Content/Admin/js/admin.js")"></script>
+<script>
+    $('#topicTable').dataTable({});
+</script>

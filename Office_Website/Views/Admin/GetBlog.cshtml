@@ -1,0 +1,59 @@
+﻿@model Office_Website.Models.Class.Blog
+@{
+    ViewBag.Title = "GetBlog";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<h2>Blog Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("updateBlog", "Admin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Id)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.Id, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @readonly = "@readonly" } })
+        </div>
+    </div>
+    @Html.LabelFor(x => x.KonuId)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.DropDownListFor(m => m.Konu.Id, (List<SelectListItem>)ViewBag.vl)
+        </div>
+    </div>
+    @Html.LabelFor(x => x.BlogResmi)
+    <div class="form-group">
+        <div class="form-line">
+                @Html.EditorFor(x => x.BlogResmi, new { htmlAttributes = new { @class = "form-control" } })
+          </div>
+    </div>
+    @Html.LabelFor(x => x.Baslik)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.TextAreaFor(x => x.Baslik, new { @id = "Baslik", @class = "form-control" }) @Html.ValidationMessageFor(x => x.aciklama, "", new { @class = "text-danger" })
+            <script>
+                CKEDITOR.replace("Baslik");
+            </script>
+        </div>
+    </div>
+    @Html.LabelFor(x => x.CreatedAt)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.CreatedAt, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @readonly = "@readonly" } })
+        </div>
+    </div>
+    @Html.LabelFor(x => x.aciklama)
+    <div class="form-group">
+        <div class="form-line">
+            @Html.TextAreaFor(x => x.aciklama, new { @id = "aciklama", @class = "form-control", @rows = "500" }) @Html.ValidationMessageFor(x => x.aciklama, "", new { @class = "text-danger" })
+            <script>
+                CKEDITOR.replace("aciklama");
+            </script>
+        </div>
+    </div>
+    <br>
+    <div align="center">
+
+        <button class="btn btn-success m-t-15 waves-effect"> Blog Güncelle</button>
+    </div>
+}
+

@@ -1,0 +1,66 @@
+﻿@model Office_Website.Models.Class.Address
+
+@{
+    ViewBag.Title = "GetContact";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>İletişim ve Adres Güncelleme Sayfası</h4>
+@using (Html.BeginForm("updateContact", "Admin", FormMethod.Post))
+{
+    <label>Konu ID</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.Id, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @readonly = "@readonly" } })
+        </div>
+    </div>
+    <label>Düzenlenme Tarihi</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.CreatedAt, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @readonly = "@readonly" } })
+        </div>
+    </div>
+    <label> Başlık</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.Başlık, new { htmlAttributes = new { @class = "form-control", @maxlength = "50" } })
+        </div>
+    </div>
+    <label>Çalışma Saatleri</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.openhours, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    <label>Açık Adres</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.AcıkAdress, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    <label>Konum</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.konum, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+
+    <label>Telefon</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.telefon, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    <label>Mail</label>
+    <div class="form-group">
+        <div class="form-line">
+            @Html.EditorFor(x => x.mail, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+        </div>
+    </div>
+    <br>
+    <div align="center">
+
+        <button class="btn btn-success m-t-15 waves-effect"> Güncelle</button>
+    </div>
+}
+

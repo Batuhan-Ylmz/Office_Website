@@ -1,0 +1,33 @@
+﻿@using Office_Website.Models.Class
+@model  List<About>
+
+<section class="about-style-one">
+    <div class="outer-box clearfix" id="who">
+
+        <!--Content Column-->
+        <div class="content-column clearfix">
+            <div class="content-box">
+                <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <!--Section Title-->
+                    <div class="sec-title">
+                        <h2>Biz <span>Kimiz</span></h2>
+                    </div>
+                    <div class="text">
+                        <div class="text">
+                            @foreach (var x in Model)
+                            {
+                                <p>@Html.Raw(x.aciklama)</p>
+                            }
+                        </div>
+                    </div>
+                    <div class="link-btn"><a href="/About/Index" class="btn-style-two">Daha Fazla <span class="fa fa-long-arrow-right"></span></a></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Image Column-->
+        <div class="image-column" style="background-image:url(/Content/Site/images/resource/about.jpg);"><div class="image"><img src="/Content/Site//images/resource/about.jpg" alt=""></div></div>
+
+    </div>
+</section>
+

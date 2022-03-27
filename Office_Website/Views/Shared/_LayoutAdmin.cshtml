@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Yılmaz Hukuk Bürosu Admin Paneli</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/Admin/plugins/bootstrap/css/bootstrap.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Admin/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Admin/css/themes/all-themes.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Admin./plugins/node-waves/waves.css")" rel="stylesheet" ) />
+    <link href="@Url.Content("~/Content/Admin/plugins/animate-css/animate.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css")" rel="stylesheet">
+</head>
+<body class="theme-red">
+    <div class="overlay"></div>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="/Admin/Index">Yönetim Paneli</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0);"><i class="material-icons">edit</i></a></li>
+                    <li><a href="javascript:void(0);"><i class="material-icons">person</i></a></li>
+                    <li><a href="~/Login/LogOut/"><i class="material-icons">exit_to_app</i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section>
+        @Html.Partial("_LeftsideBar")
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/bootstrap/js/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery-slimscroll/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/node-waves/waves.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery-countto/jquery.countTo.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/raphael/raphael.min.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/morrisjs/morris.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/chartjs/Chart.bundle.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery-sparkline/jquery.sparkline.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/js/admin.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/js/pages/index.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/js/demo.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/bootstrap/js/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/jquery-slimscroll/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/plugins/node-waves/waves.js")"></script>
+    <script src="@Url.Content("~/Content/Admin/js/admin.js")"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+﻿@using Office_Website.Models.Class
+@{
+    Admin admin = Session["Kullanici"] as Admin;
+}
+<html lang="en">
+<head>
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+
+            $(window).scroll(function () {
+                $(".slideanim").each(function () {
+                    var pos = $(this).offset().top;
+
+                    var winTop = $(window).scrollTop();
+                    if (pos < winTop + 600) {
+                        $(this).addClass("slide");
+                    }
+                });
+            });
+        })
+
+    </script>
+    <meta charset="UTF-8">
+    <title>@Html.Raw(ViewBag.Title)</title>
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js%22%3E"></script>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site/css/style.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site/css/responsive.css")">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/Site/images/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="~/Content/Admin/images/logo_yorum.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="/Content/Site/hovers/hovers.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="boxed_wrapper">
+        <section class="mainmenu-area stricky" style="background-color: rgba(28,28,28,0.65);color: rgba(255,255,255,1);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo" style="margin-top:30px; margin-left:-139px; ">
+                            <a href="@Url.Action("","")"><strong><i><font size="6" color="crimson" face="Arial Rounded MT Bold">Avukat Miraç YILMAZ</font></i></strong> </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 menu-column">
+                        <nav class="main-menu">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li>
+                                        <a href="@Url.Action("","")">Anasayfa</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","About")">Hakkımızda</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Topic")">Çalışma Alanlarımız</a>
+                                        @Html.Action("Menu", "Home")
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Index","Blog")">Bloglarımız</a>
+
+                                    </li>
+                                </ul>
+                                <ul class="mobile-menu clearfix">
+                                    <li>
+                                        <a href="@Url.Action("","")">Anasayfa</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","About")">Hakkımızda</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Topic")">Çalışma Alanlarımız</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Blog")">Blog</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </nav>
+                    </div>
+                    <div class="col-md-2" style="margin-right:20px;">
+                        <div class="right-column">
+                            <div class="right-area">
+
+                                @if (Session["Kullanici"] == null)
+                                {
+                                    <div class="link-btn4 float_left">
+                                        <a href="@Url.Action("Index", "Contact")" class="btn-style-one">İLETİŞİM</a>
+                                    </div>
+                                }
+                                @if (Session["Kullanici"] != null)
+                                {
+                                    <div class="link-btn4 float-left">
+                                        <a href="@Url.Action("Index" ,"Admin")" class="btn-style-one">Yönetim Paneli</a>
+                                    </div>
+                                    <div style="position:relative; left:200px;bottom:50px">
+                                        <h5>Hoşgeldiniz  <br /> <br /> @admin.UserName </h5>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        @RenderBody()
+        <footer class="main-footer">
+            <div class="widgets-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                            <div class="row clearfix">
+                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                    <div class="footer-widget about-widget">
+                                        <!-- YENİ FOTOYU SAĞDAKİ SEKMEYE SÜRÜKLEYİP AT,-->
+                                        <figure class="footer-logo"><a href="/Home/Index"><img src="~/Content/Site/images/logo/bitti-footer.png" alt=""></a></figure>    <!-- SOLDAN PNG'nin ismini ver, ÇALIŞTIRMAK İÇİN YUKARDAKİ-->
+                                        <!-- IIS EXPRESS GOOGLE CHROME yazan yere tıkla-->
+                                        <div class="widget-content">
+                                            <div class="text">
+                                                <ul>
+                                                    <li><b>Adres:</b> Cumhuriyet Caddesi Piri Çelebi Mahallesi Benli İş Hanı Kat:2 53020 Merkez/RİZE </li>
+                                                    <br />
+                                                    <li><b>Telefon:</b> (0464) 217 66 99</li>
+                                                    <br />
+                                                    <li><b>Mail Adresimiz:</b> av.miracyilmaz@gmail.com</li>
+
+                                                </ul>
+                                            </div>
+
+                                            @*<ul class="social">
+                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                                </ul>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                    <div class="footer-widget service-widget">
+                                        <div class="section-title" style="margin-left:20px;">
+                                            <h3><a href="/Topic/Index" style="color:gray;">Çalışma Alanlarımız</a></h3>
+                                        </div>
+                                        <div class="widget-content" style="margin-left:15px;">
+                                            <ul class="list">
+                                                @Html.Action("Menu", "Home")
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="big-column col-md-6 col-sm-12 col-xs-12" ">
+                            <div class="row clearfix">
+                                <div class="footer-column col-md-6 col-sm-6 col-xs-12" style="margin-left:20px;">
+                                    <div class="footer-widget links-widget">
+                                        <div class="section-title">
+                                            <h3>HIZLI ERİŞİM</h3>
+                                        </div>
+                                        <div class="widget-content">
+                                            <ul class="list">
+                                                <li><a href="/Home/Index">Anasayfa</a></li>
+                                                <li><a href="/About/Index">Hakkımızda</a></li>
+                                                <li><a href="/Blog/Index">Blog</a></li>
+                                                <li><a href="/Contact/Index">İletişim</a></li>
+                                                <li><a href="https://www.resmigazete.gov.tr/">Resmi Gazete</a></li>
+                                                <li><a href="https://www.mevzuat.gov.tr/">Mevzuat Bilgi Sistemi</a></li>
+                                                <li><a href="https://www.adalet.gov.tr/">T.C. Adalet Bakanlığı</a></li>
+                                                <li><a href="https://www.anayasa.gov.tr/tr/anasayfa/">Anayasa Mahkemesi</a></li>
+                                                <li><a href="https://diabgm.adalet.gov.tr/">Dış İlişkiler ve Avrupa Birliği G.M.</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                        <div class="footer-widget contact-widget">
+                                            <div class="section-title">
+                                                <h3>instagram</h3>
+                                            </div>
+
+                                            <div class="footer-widget gallery-widget">
+                                                <div class="row clearfix">
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi1.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi2.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi3.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi4.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi5.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+
+                                                    <figure class="image">
+                                                        <img src="~/Content/Site/images/resource/fi6.jpg" alt="">
+                                                        <div class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></div>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="pull-left copy-text">
+                        <p>©<a href="/Home/Index">  Avukat Miraç YILMAZ.</a></p>
+                    </div>
+                    <div class="pull-right get-text">
+                        <ul>
+                            <li><a href="@Url.Action("Index","About")">Hakkımızda</a></li>
+                            <li><a href="/Login/Login"> Login</a></li>
+                        </ul>
+                    </div><!-- /.pull-left -->
+                </div><!-- /.container -->
+            </div>
+
+        </footer>
+
+        <!-- Scroll Top Button -->
+        <button class="scroll-top tran3s color2_bg">
+            <span class="fa fa-angle-up"></span>
+        </button>
+        <!-- pre loader  -->
+        <div class="preloader"></div>
+
+
+        <!-- jQuery js -->
+        <script src="@Url.Content("~/Content/Site/js/jquery.js")"></script>
+        <!-- bootstrap js -->
+        <script src="@Url.Content("~/Content/Site/js/bootstrap.min.js")"></script>
+        <!-- jQuery ui js -->
+        <script src="@Url.Content("~/Content/Site/js/jquery-ui.js")"></script>
+        <!-- owl carousel js -->
+        <script src="@Url.Content("~/Content/Site/js/owl.carousel.min.js")"></script>
+        <!-- jQuery validation -->
+        <script src="@Url.Content("~/Content/Site/js/jquery.validate.min.js")"></script>
+        <!-- google map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRvBPo3-t31YFk588DpMYS6EqKf-oGBSI"></script>
+        <script src="@Url.Content("~/Content/Site/js/gmap.js")"></script>
+        <!-- mixit up -->
+        <script src="@Url.Content("~/Content/Site/js/wow.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.mixitup.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.fitvids.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/bootstrap-select.min.js")"></script>
+        <!-- revolution slider js -->
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/jquery.themepunch.tools.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/jquery.themepunch.revolution.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.actions.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.carousel.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.kenburn.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.migration.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.navigation.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.parallax.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.slideanims.min.js")"></script>
+        <script src="@Url.Content("~/Content/Site/assets/revolution/js/extensions/revolution.extension.video.min.js")"></script>
+        <!-- fancy box -->
+        <script src="@Url.Content("~/Content/Site/js/jquery.fancybox.pack.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.polyglot.language.switcher.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/nouislider.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.bootstrap-touchspin.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/SmoothScroll.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.appear.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.countTo.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/jquery.flexslider.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/imagezoom.js")"></script>
+        <script id="map-script" src="@Url.Content("~/Content/Site/js/default-map.js")"></script>
+        <script src="@Url.Content("~/Content/Site/js/custom.js")"></script>
+
+    </div>
+
+</body>
+</html>

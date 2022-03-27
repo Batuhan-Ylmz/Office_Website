@@ -1,0 +1,18 @@
+﻿@using Office_Website.Models.Class;
+@model List<Topic>
+
+
+
+<div class="category-style-one sidebar-padd mar-1">
+    <div class="inner-title">
+        <h3>Çalışma Alanlarımız</h3>
+    </div>
+    <ul class="list">
+        @foreach (var x in Model)
+        {
+            <li><a href="/Topic/Topicdetail/@x.Id" class="clearfix"><span class="float_left"><strong>@x.KonuAD</strong></span><span class="float_right"><strong>¬</strong></span></a></li>
+        }
+    </ul>
+</div>
+
+

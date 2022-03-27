@@ -1,0 +1,39 @@
+﻿@using Office_Website.Models.Class;
+@model List<Address>
+<section class="call-to-action bg-1 padd-1">
+    @foreach (var x in Model)
+    {
+        <div class="container">
+            <div class="row clearfix">
+                <!--Icon Column-->
+
+                <div class="column icon-column col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <div class="icon"><span class="flaticon-technology"></span></div>
+                        <h3>Bizi Arayın :   @x.telefon</h3>
+                        <div class="text">@x.AcıkAdress</div>
+                    </div>
+                </div>
+                <!--Icon Column-->
+
+                <div class="column icon-column col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <div class="icon"><span class="flaticon-circular-clock-tool"></span></div>
+                        <h3>Çalışma Saatlerimiz  </h3>
+                        <div class="text"> @x.openhours</div>
+
+                    </div>
+                </div>
+
+                <!--Link Column-->
+                <div class="column link-column col-md-4 col-sm-6 col-xs-12">
+                    <div class="link-btn5">
+                        <a href="/Contact/Index" class="btn-style-two">BİZE ULAŞIN</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</section>
+

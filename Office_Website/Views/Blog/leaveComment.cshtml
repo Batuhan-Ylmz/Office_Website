@@ -1,0 +1,25 @@
+﻿<div class="add_your_review">
+    <div class="inner-title">
+        <h3>Yorum Yapın</h3>
+    </div>
+    <form method="post">
+        <div class="row">
+            <input type="text" placeholder="ID" name="BlogID" value="@ViewBag.deger" required hidden>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <label>Adınız Soyadınız</label>
+                <input type="text"name="KullanıcıADI" placeholder="">
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <label>Mail Adresiniz</label>
+                <input placeholder="" name="mail">
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <label>Yorumunuz</label>
+                <textarea placeholder="" name="Yorum" required></textarea>
+            </div>
+
+        </div>
+        <input type="submit" value="Paylaş"/>
+    </form>
+</div>
